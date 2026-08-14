@@ -2,7 +2,7 @@ import os
 from dotenv import load_dotenv
 from pydantic import BaseModel,Field 
 from langchain_core.prompts import ChatPromptTemplate 
-from langchain_openai import ChatOpenAI
+from langchain_google_genai import ChatGoogleGenerativeAI 
 
 load_dotenv()
 
@@ -26,8 +26,9 @@ prompt = ChatPromptTemplate.from_messages(
     ]
 )
 
-model = ChatOpenAI(
-    model="gpt-4.1-mini",
+model = ChatGoogleGenerativeAI(
+    model="gemini-2.5-flash",
+    api_version="v1",
     temperature = 0,
 )
 

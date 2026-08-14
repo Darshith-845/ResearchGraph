@@ -49,3 +49,5 @@ prompt
   ▼
 structured_model
 Like the output of first componenet becomes the input to the second , this is part of langchain's runnable 
+Ohhh I don't have any openAI credits so there is no good output 
+Lets change to gemini
