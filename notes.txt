@@ -1,0 +1,3 @@
+Since I have an idea about how to use LLM Apis and orchastrate multiple agents, we will directly use langchain to understand 
+Lets setup the project with necessary folders and files, and also create virtual environment 
+Now installed the necessary requirements that include langchain langchain-openai and python-dotenv
