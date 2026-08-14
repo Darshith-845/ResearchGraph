@@ -1,3 +1,51 @@
 Since I have an idea about how to use LLM Apis and orchastrate multiple agents, we will directly use langchain to understand 
 Lets setup the project with necessary folders and files, and also create virtual environment 
 Now installed the necessary requirements that include langchain langchain-openai and python-dotenv
+
+Firstlly building a simple LLM pipleine to learn how exactly langchain works 
+
+Research Question
+       │
+       ▼
+┌─────────────────┐
+│ Prompt Template │
+└────────┬────────┘
+         │
+         ▼
+    ┌─────────┐
+    │  Model  │
+    └────┬────┘
+         │
+         ▼
+┌──────────────────┐
+│ Structured Output│
+└────────┬─────────┘
+         │
+         ▼
+    Research Plan
+
+This is how the plan looks like 
+
+For now lets create a pipeline in main file and also try understanding the syntax of lanchain
+Lets walk through some concepts that were used in the first iteration
+normally if asked llm then it will return arbitrary text but we don't want that 
+we want specific data structure that is topic and questions in thsi case
+Thats why pydantic is use dit lets us define schemas using python classes 
+Here basemodel is like a foundation and can be used to validate data models 
+here topics will always be list and the questions will be list of strings and also it gives llm
+a structure input
+Field here helps us attach metadata and validation infromation to pydantic field
+and Field is very useful because it can help llm understand what this field actually mean
+Here ChatPromptTemplate is used for constructing a sequence of chat messages 
+and from_messages is like create a prompt template from the messages
+here system describes the model's overall behavior and human represents the actual task
+Here structured model is used to tell the model that we don't want arbitrary text from you , we want
+the response oto confirm to a particualar scheme and in this case its ResearchPlan
+Another imporatant part is | , its not a normal python pipe operator , it implements behavior for | so that 
+langchain componenets can be compsed 
+So chain = prompt | structured_model become:
+prompt
+  │
+  ▼
+structured_model
+Like the output of first componenet becomes the input to the second , this is part of langchain's runnable 
