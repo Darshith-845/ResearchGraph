@@ -51,3 +51,36 @@ structured_model
 Like the output of first componenet becomes the input to the second , this is part of langchain's runnable 
 Ohhh I don't have any openAI credits so there is no good output 
 Lets change to gemini
+I was trying to use the gemini-2.5-flash model but i guess they have cancelled the free access for that model so I have used gemini 3.5 
+Also there was some issue with apis , i guess my previous api got leaked somewhere so now I made a new api and its working fine 
+Lets test the type of the messages and result 
+I guess phase 1 is completed, now lets and now we know pydantic, runnable, invoke, ChatPromptTemplate
+Now lets move to the next phase and this is our architecture :
+Research Topic
+      │
+      ▼
+┌───────────────┐
+│ Research      │
+│ Planner       │
+└───────┬───────┘
+        │
+        ▼
+ ResearchPlan
+        │
+        ▼
+┌───────────────┐
+│ Research      │
+│ Question      │
+│ Formatter     │
+└───────┬───────┘
+        │
+        ▼
+ Final Research Brief
+
+ Create a Research brief part and all the essential components for it 
+ i am kinda getting a hang of it 
+
+ Facing some issues:
+ Something like TypeError: unhashable type: 'RunnableSequence'
+ Will fix it tomorrow 
+ Ohh while creating the chain i used round brackets instead of the 
