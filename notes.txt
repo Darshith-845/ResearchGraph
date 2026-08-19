@@ -83,4 +83,7 @@ Research Topic
  Facing some issues:
  Something like TypeError: unhashable type: 'RunnableSequence'
  Will fix it tomorrow 
- Ohh while creating the chain i used round brackets instead of the 
+ Ohh while creating the chain i used curly brackets instead of the round brackets
+
+ Okay now we are going to study about the tools 
+ Studied the basics of tools 
