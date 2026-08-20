@@ -87,3 +87,40 @@ Research Topic
 
  Okay now we are going to study about the tools 
  Studied the basics of tools 
+ So this is the new plan now 
+                     ┌──────────────┐
+                    │     LLM      │
+                    └──────┬───────┘
+                           │
+                     "I need data"
+                           │
+                           ▼
+                    ┌──────────────┐
+                    │    Tool      │
+                    └──────┬───────┘
+                           │
+                      external data
+                           │
+                           ▼
+                    ┌──────────────┐
+                    │     LLM      │
+                    └──────────────┘
+
+So lets start by creating tools 
+
+We can use .invoke() because tool is a runnable too
+we can also use bind_tools so that the model understands that these are the tools it can access
+when required
+
+User
+ │
+ ▼
+LLM
+ │
+ ├── "I can answer directly"
+ │
+ └── "I need a tool"
+          │
+          ▼
+     ToolCall
+This is how it works during a tools call

@@ -4,6 +4,7 @@ from pydantic import BaseModel,Field
 from langchain_core.prompts import ChatPromptTemplate 
 from langchain_google_genai import ChatGoogleGenerativeAI 
 from langchain_core.runnables import RunnableLambda
+from langchain_core.tools import tool
 
 load_dotenv()
 
@@ -85,16 +86,33 @@ research_chain = (
     | brief_prompt
     | brief_model
 )
+
+@tool
+def search_research_database(query: str) -> str:
+    """Search a research database for information about a topic."""
+    return f"Research results for: {query}"
+    
 def main():
     result = research_chain.invoke(
         {
             "topic": "How does speculative decoding improve LLM inference?"
         }
-    )
- 
-    
-    
+    )  
+    print(search_research_database)
 
+    model_with_tools = model.bind_tools(
+        [search_research_database]
+    )
+
+    response = model_with_tools.invoke(
+        "Find information about the algorithmic mechanism of speculative decoding"
+    )
+
+    print("CONTENT: ")
+    print(response.content)
+
+    print("\nTOOL CALLS:")
+    print(response.tool_calls)
     print(result)
     print(type(result))
 
